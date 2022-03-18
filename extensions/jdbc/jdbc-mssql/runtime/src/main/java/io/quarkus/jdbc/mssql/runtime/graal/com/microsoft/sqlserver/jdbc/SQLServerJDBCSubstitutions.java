@@ -1,13 +1,7 @@
 package io.quarkus.jdbc.mssql.runtime.graal.com.microsoft.sqlserver.jdbc;
 
-import com.oracle.svm.core.annotate.Delete;
 import com.oracle.svm.core.annotate.Substitute;
 import com.oracle.svm.core.annotate.TargetClass;
-
-@TargetClass(className = "com.microsoft.sqlserver.jdbc.SQLServerADAL4JUtils")
-@Delete
-final class SQLServerADAL4JUtils {
-}
 
 @TargetClass(className = "com.microsoft.sqlserver.jdbc.SqlFedAuthToken")
 final class QuarkusSqlFedAuthToken {
@@ -23,19 +17,24 @@ final class QuarkusSqlFedAuthInfo {
 final class QuarkusSQLServerConnection {
 
     @Substitute
-    private void validateAdalLibrary(String errorMessage) {
-        throw new IllegalStateException("Quarkus does not support Active Directory based authentication");
-    }
-
-    @Substitute
     private QuarkusSqlFedAuthToken getFedAuthToken(QuarkusSqlFedAuthInfo fedAuthInfo) {
         throw new IllegalStateException("Quarkus does not support Active Directory based authentication");
     }
 
+}
+
+@TargetClass(className = "com.microsoft.sqlserver.jdbc.SQLServerSecurityUtility")
+final class QuarkusSQLServerSecurityUtility {
+
     @Substitute
-    private QuarkusSqlFedAuthToken getMSIAuthToken(String resource, String msiClientId) {
+    static QuarkusSqlFedAuthToken getMSIAuthToken(String resource, String msiClientId) {
         throw new IllegalStateException("Quarkus does not support MSI based authentication");
     }
+
+}
+
+@TargetClass(className = "com.microsoft.sqlserver.jdbc.SQLServerColumnEncryptionAzureKeyVaultProvider")
+final class QuarkusSQLServerColumnEncryptionAzureKeyVaultProvider {
 
 }
 
