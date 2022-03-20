@@ -23,15 +23,15 @@ final class QuarkusSQLServerConnection {
 
 }
 
-@TargetClass(className = "com.microsoft.sqlserver.jdbc.SQLServerSecurityUtility")
-final class QuarkusSQLServerSecurityUtility {
-
-    @Substitute
-    static QuarkusSqlFedAuthToken getMSIAuthToken(String resource, String msiClientId) {
-        throw new IllegalStateException("Quarkus does not support MSI based authentication");
-    }
-
-}
+//@TargetClass(className = "com.microsoft.sqlserver.jdbc.SQLServerSecurityUtility")
+//final class QuarkusSQLServerSecurityUtility {
+//
+//    @Substitute
+//    static QuarkusSqlFedAuthToken getMSIAuthToken(String resource, String msiClientId) {
+//        throw new IllegalStateException("Quarkus does not support MSI based authentication");
+//    }
+//
+//}
 
 @TargetClass(className = "com.microsoft.sqlserver.jdbc.SQLServerColumnEncryptionAzureKeyVaultProvider")
 final class QuarkusSQLServerColumnEncryptionAzureKeyVaultProvider {
