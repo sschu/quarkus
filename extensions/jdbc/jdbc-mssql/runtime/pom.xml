@@ -37,6 +37,10 @@
             <artifactId>quarkus-kubernetes-service-binding</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
