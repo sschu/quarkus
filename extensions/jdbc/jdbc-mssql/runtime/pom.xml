@@ -28,6 +28,17 @@
             <artifactId>mssql-jdbc</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-core</artifactId>
+            <version>1.24.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-buffer</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
             <groupId>org.graalvm.nativeimage</groupId>
             <artifactId>svm</artifactId>
             <scope>provided</scope>

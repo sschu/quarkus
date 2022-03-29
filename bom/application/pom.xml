@@ -4508,6 +4508,17 @@
                 <version>${mssql-jdbc.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-core</artifactId>
+                <version>1.24.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.netty</groupId>
+                        <artifactId>netty-buffer</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-client</artifactId>
                 <version>${elasticsearch-opensource-components.version}</version>
